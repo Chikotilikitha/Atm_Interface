@@ -1,0 +1,77 @@
+import java.util.*;
+class Account
+{
+    String name;
+    int AccountNo;
+    String AccountType;
+    int balance=0;                 
+    public static void main(String args[])
+    {
+           Account a=new Account() ;
+            Scanner s=new Scanner(System.in);
+            System.out.println("enter the name of the depositer");
+            a.name=s.next();
+            System.out.println("enter the account number");
+            a.AccountNo=s.nextInt();
+            System.out.println("enter the type of account");
+            System.out.println("1.savings 2.current ");
+            int ch=s.nextInt();
+           while(2>1)
+           {
+            switch(ch)
+             {
+                    case 1:a.savings_account();break;
+                    case 2:a.current_account();break;
+                    default: System.out.println("wrong choice");
+              }
+           }
+            
+     }
+      void savings_account()
+      {
+                  Scanner s=new Scanner(System.in);
+                  System.out.println("enter the coice");
+                  System.out.println("1.deposite 2.withdraw 3.exit");
+                  int b=s.nextInt();
+                  switch(b)
+                  {
+                        case 1:deposite();break;
+                        case 2:withdraw();break;
+                        case 3:System.exit(0);
+                        default:System.out.println("wrong choice");
+                  }
+                  
+       }
+       void current_account()
+       {
+             System.out.println("CANNOT WITHDRAW FROM CURRENT ACCOUNT");
+        }
+       void deposite()
+       {
+             Scanner s=new Scanner(System.in);
+              System.out.println("enter the amount to be deposited");
+              int amount=s.nextInt();
+              balance=balance+amount;
+              display();
+         }
+      void withdraw()
+       {
+             Scanner s=new Scanner(System.in);
+             if(balance<=0)
+             {
+                      System.out.println("YOUR ACCOUNT BALANCE IS ZERO");
+              }
+              else
+              {
+                      System.out.println("enter the amount to be withdrawn");
+                      int ammout_withdrawn=s.nextInt();
+                      balance=balance-ammout_withdrawn;
+                      display();
+               }
+       }
+       void display()
+             {
+
+                      System.out.println("the total balance is"+balance);
+             }
+}
